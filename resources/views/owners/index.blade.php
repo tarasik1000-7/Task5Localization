@@ -4,9 +4,16 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>Car Owners</h2>
-            <a href="{{ route('owners.create') }}" class="btn btn-primary">
-                Add Owner
-            </a>
+
+            <div class="d-flex gap-2">
+                <a href="{{ route('cars.index') }}" class="btn btn-outline-dark">
+                    Cars
+                </a>
+
+                <a href="{{ route('owners.create') }}" class="btn btn-primary">
+                    Add Owner
+                </a>
+            </div>
         </div>
 
         @if(session('success'))
@@ -21,9 +28,10 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Surname</th>
-                <th width="200">Actions</th>
+                <th width="240">Actions</th>
             </tr>
             </thead>
+
             <tbody>
             @forelse($owners as $owner)
                 <tr>
@@ -31,8 +39,11 @@
                     <td>{{ $owner->name }}</td>
                     <td>{{ $owner->surname }}</td>
                     <td>
-                        <a href="{{ route('owners.edit', $owner) }}"
-                           class="btn btn-sm btn-warning">
+                        <a href="{{ route('owners.show', $owner) }}" class="btn btn-sm btn-primary">
+                            View
+                        </a>
+
+                        <a href="{{ route('owners.edit', $owner) }}" class="btn btn-sm btn-warning">
                             Edit
                         </a>
 

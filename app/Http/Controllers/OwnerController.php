@@ -11,7 +11,15 @@ class OwnerController extends Controller
     {
         $owners = Owner::all();
         return view('owners.index', compact('owners'));
+
     }
+    public function show(Owner $owner)
+    {
+        $owner->load('cars.owner'); // завантажуємо всі машини цього власника
+
+        return view('owners.show', compact('owner'));
+    }
+
 
     public function create()
     {
